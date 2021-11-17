@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.*;
 
 import org.apache.hadoop.fs.*;
-import org,apache.hadoop.conf.*;
+import org.apache.hadoop.conf.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.util.*;
@@ -20,9 +20,9 @@ public class calcWordInDoc extends Configured implements Tool{
         private Text word = new Text();
 
         //meaningless words
-        private static String[] meaningless = {"A", "a", "the", "an", "An", "in", "of", "from", "to", "on", "and", "The", "As", "as", "AND"}
+        private static String[] meaningless = {"A", "a", "the", "an", "An", "in", "of", "from", "to", "on", "and", "The", "As", "as", "AND"};
 
-        private static Vector<String> meaninglessWord(meaningless,meaningless+15)
+        private static Vector<String> meaninglessWord(meaningless,meaningless+15);
 
         @Override
         public void map(Text key, BytesWritable value, Context context)
@@ -45,7 +45,7 @@ public class calcWordInDoc extends Configured implements Tool{
         
         private IntWritable wordSum = new IntWritable();
 
-        public void reduce(Text key, Iterable<IntWritable) value, Context context)
+        public void reduce(Text key, Iterable<IntWritable>) value, Context context)
             throws IOException, InterruptedException {
                 int sum = 0;
                 for (IntWritable item : value){

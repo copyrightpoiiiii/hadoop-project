@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 import org.apache.hadoop.fs.*;
-import org,apache.hadoop.conf.*;
+import org.apache.hadoop.conf.*;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.*;
 import org.apache.hadoop.util.*;
@@ -69,9 +69,9 @@ public class serializationData extends Configured implements Tool {
 			fs.delete(outputPath, true);
 		}
 
-		Job job = Job.getInstance(conf, "SmallFilesToserializationDataConverter");
+		Job job = Job.getInstance(conf, "serializationData");
 		
-		job.setJarByClass(SmallFilesToserializationDataConverter.class);
+		job.setJarByClass(serializationData.class);
 		job.setMapperClass(serializationDataMapper.class);
 
 		job.setOutputKeyClass(Text.class);
@@ -96,7 +96,7 @@ public class serializationData extends Configured implements Tool {
 	}
 
 	public static void main(String[] args) throws Exception {
-		int exitCode = ToolRunner.run(new Configuration(), new SmallFilesToserializationDataConverter(),
+		int exitCode = ToolRunner.run(new Configuration(), new serializationData(),
 				args);
 		
 		System.exit(exitCode);
