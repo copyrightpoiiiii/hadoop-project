@@ -42,7 +42,7 @@ public class calcCategoryNumInData extends Configured implements Tool {
         public void reduce(Text key, Iterable<IntWritable> value, Context context)
             throws  IOException, InterruptedException {
                 int sum = 0;
-                for(IntWritable item : values){
+                for(IntWritable item : value){
                     sum += item.get();
                 }
                 this.category.set(key);

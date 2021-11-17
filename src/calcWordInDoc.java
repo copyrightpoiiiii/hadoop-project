@@ -56,7 +56,7 @@ public class calcWordInDoc extends Configured implements Tool{
             throws IOException, InterruptedException {
             String line = new String(value.getBytes(),0,value.getLength());
             Matcher m = PATTERN.matcher(line);
-            String category_file = key.toString().split("|");
+            String[] category_file = key.toString().split("|");
             while(m.find()){
                 String tword = m.group();
                 if(!meaninglessWord.contains(tword)){

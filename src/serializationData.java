@@ -63,7 +63,7 @@ public class serializationData extends Configured implements Tool {
 			if(conf.get("INPUTPATH").equals("hdfs://master:9000/input/country_data/train")) {
 //				Utils.CLASSGROUP += train_tempList[i].getPath().getName() + "/";
 				if (flag) {
-					out = new PrintWriter(Utils.FILE);
+					out = new PrintWriter("group.txt");
 					flag = false;
 				}
 				out.print(train_tempList[i].getPath().getName() + "/");
@@ -86,13 +86,13 @@ public class serializationData extends Configured implements Tool {
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(BytesWritable.class);
-		job.setInputFormatClass(WholeFileInputFormat.class);
+		job.setInputFormatClass(fileFormat.class);
 		job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
 		// 根据输入的训练集路径参数，来指定输入
 		if (null != INPUT_PATH_TRAIN) {
 			for (String path : INPUT_PATH_TRAIN) {
-				WholeFileInputFormat.addInputPath(job, new Path(path));
+				fileFormat.addInputPath(job, new Path(path));
 			}
 		}
 //		WholeFileInputFormat.addInputPath(job, new Path(Utils.BASE_TRAINDATA_PATH));
