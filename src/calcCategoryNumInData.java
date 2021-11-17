@@ -1,3 +1,4 @@
+package qi.hadoop.bayes;
 
 import java.io.IOException;
 import java.util.HashMap;
