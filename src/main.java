@@ -13,6 +13,12 @@ public class main {
         Configuration conf = new Configuration();
         conf.set("INPUTPATH","hdfs://master:9000/input/country_data/train");
         conf.set("OUTPUTPATH","hdfs://master:9000/SerializationTrainData");
+
+        serializationData seqCov = new serializationData();
+
+        ToolRunner.run(conf, seqCov, args);
+
+        calcCategoryNumInData 
     }
 }
 

@@ -48,7 +48,7 @@ public class calcWordInDoc extends Configured implements Tool{
 			if (meaninglessWord == null) {
 				meaninglessWord = new Vector<String> ();
                 for (String item : meaningless){
-                    meaninglessWord.add(item)
+                    meaninglessWord.add(item);
                 }
 			}
 			super.setup(context);
