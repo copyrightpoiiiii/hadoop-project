@@ -22,7 +22,7 @@ public class calcWordInDoc extends Configured implements Tool{
         //meaningless words
         private static String[] meaningless = {"A", "a", "the", "an", "An", "in", "of", "from", "to", "on", "and", "The", "As", "as", "AND"};
 
-        private static Vector<String> meaninglessWord = Vector<String> (meaningless,meaningless+15);
+        private static Vector<String> meaninglessWord = Vector<String> (begin(meaningless),end(meaningless));
 
         @Override
         public void map(Text key, BytesWritable value, Context context)
