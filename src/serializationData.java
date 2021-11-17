@@ -4,11 +4,21 @@ import java.io.PrintWriter;
 
 import java.util.*;
 
-import org.apache.hadoop.fs.*;
-import org.apache.hadoop.conf.*;
-import org.apache.hadoop.io.*;
-import org.apache.hadoop.mapreduce.*;
-import org.apache.hadoop.util.*;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.BytesWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.InputSplit;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
 
 public class serializationData extends Configured implements Tool {
 
@@ -77,7 +87,7 @@ public class serializationData extends Configured implements Tool {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(BytesWritable.class);
 		job.setInputFormatClass(WholeFileInputFormat.class);
-		job.setOutputFormatClass(serializationDataOutputFormat.class);
+		job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
 		// 根据输入的训练集路径参数，来指定输入
 		if (null != INPUT_PATH_TRAIN) {
@@ -87,7 +97,7 @@ public class serializationData extends Configured implements Tool {
 		}
 //		WholeFileInputFormat.addInputPath(job, new Path(Utils.BASE_TRAINDATA_PATH));
 		
-		serializationDataOutputFormat.setOutputPath(job, outputPath);
+SequenceFileOutputFormat.setOutputPath(job, outputPath);
 		
 		if (!flag)
 			out.close();
