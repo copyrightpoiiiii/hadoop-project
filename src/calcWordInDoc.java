@@ -8,7 +8,10 @@ import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapred.*;
 import org.apache.hadoop.util.*;
 
-public class calcWordInDoc extends Mapper<LongWritable,Text,Text,IntWritable> {
+public class calcWordInDoc extends Configured implements Tool{
+
+
+public static class calcWordInDocMapper extends Mapper<Text, BytesWritable, Text, IntWritable> {
 
     //匹配英文单词，(-[/sa-zA-Z])* 为了匹配人名等加有连字符的单词
     private static final Pattern PATTERN = Pattern.compile("[/sa-zA-Z]+(-[/sa-zA-Z])*");
@@ -20,7 +23,9 @@ public class calcWordInDoc extends Mapper<LongWritable,Text,Text,IntWritable> {
     private IntWritable wordCount = new IntWritable(1);
 
     //meaningless words
-    private static Vector<String> meaninglessWord = {"A", "a", "the", "an", "An", "in", "of", "from", "to", "on", "and", "The", "As", "as", "AND"}
+    private static String[] meaningless = {"A", "a", "the", "an", "An", "in", "of", "from", "to", "on", "and", "The", "As", "as", "AND"}
+
+    private static Vector<String> meaninglessWord(meaningless,meaningless+15)
 
     @Override
     public void map(Text key, BytesWritable value, Context context)
@@ -36,6 +41,9 @@ public class calcWordInDoc extends Mapper<LongWritable,Text,Text,IntWritable> {
             }
         }
     }
-
     
+    public static class calcWordInDocReducer extends Reducer<Text, IntWritable, Text, IntWriteable> {
+    
+    }    
 }
+
