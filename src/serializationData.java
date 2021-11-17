@@ -33,6 +33,7 @@ public class serializationData extends Configured implements Tool {
 			InputSplit split = context.getInputSplit();
 			String fileName = ((FileSplit) split).getPath().getName();
 			String className = ((FileSplit) split).getPath().getParent().getName();
+			System.out.println("in file：" + fileName + "+" + className);
 			filenameKey.set(className + "|" + fileName);
 		}
 
@@ -98,7 +99,7 @@ public class serializationData extends Configured implements Tool {
 		}
 //		WholeFileInputFormat.addInputPath(job, new Path(Utils.BASE_TRAINDATA_PATH));
 		
-SequenceFileOutputFormat.setOutputPath(job, outputPath);
+		SequenceFileOutputFormat.setOutputPath(job, outputPath);
 		
 		if (!flag)
 			out.close();
