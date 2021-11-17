@@ -15,10 +15,26 @@ public class main {
         conf.set("OUTPUTPATH","hdfs://master:9000/SerializationTrainData");
 
         serializationData seqCov = new serializationData();
-
         ToolRunner.run(conf, seqCov, args);
 
-        calcCategoryNumInData 
+        calcCategoryNumInData calcCategoryNum = new calcCategoryNumInData();
+        ToolRunner.run(conf, calcCategoryNum, args);
+
+        calcWordInDoc calcWordInFile = new calcWordInDoc();
+        ToolRunner.run(conf, calcWordInFile, args);
+
+        calcWordNumInDoc calcWordNumInFile = new calcWordNumInDoc();
+        ToolRunner.run(conf, calcWordNumInFile, args);
+
+        Configuration conf_test = new Configuration();
+        conf_test.set("INPUTPATH","hdfs://master:9000/input/country_data/test");
+        conf_test.set("OUTPUTPATH","hdfs://master:9000/SerializationTrainData_test");
+
+        ToolRunner.run(conf_test, seqCov, args);
+
+        //Configuration confBayes = new Configuration();
+        
+
     }
 }
 
