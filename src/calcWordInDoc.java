@@ -45,8 +45,11 @@ public class calcWordInDoc extends Configured implements Tool{
         @Override
 		protected void setup(Context context) throws IOException,
 				InterruptedException {
-			if (null == meaninglessWord) {
-				meaninglessWord = new Vector<String>(begin(meaningless),end(meaningless));
+			if (meaninglessWord == null) {
+				meaninglessWord = new Vector<String> ();
+                for (String item : meaningless){
+                    meaninglessWord.add(item)
+                }
 			}
 			super.setup(context);
 		}
