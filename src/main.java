@@ -33,7 +33,18 @@ public class main {
 
         ToolRunner.run(conf_test, seqCov, args);
 
-        //Configuration confBayes = new Configuration();
+        Configuration confBayes = new Configuration();
+        Bayes Bayes = new Bayes();
+		BufferedReader in = new BufferedReader(new FileReader("classgroup.txt"));
+		String s;
+		StringBuilder sb = new StringBuilder();
+		while ((s = in.readLine()) != null) {
+			sb.append(s);
+		}
+		in.close();
+		System.out.println(sb.toString());
+		confBayes.set("CLASSGROUP", sb.toString());
+		ToolRunner.run(confBayes, Bayes, args);
         
 
     }

@@ -33,7 +33,6 @@ public class serializationData extends Configured implements Tool {
 			InputSplit split = context.getInputSplit();
 			String fileName = ((FileSplit) split).getPath().getName();
 			String className = ((FileSplit) split).getPath().getParent().getName();
-			System.out.println("in file：" + fileName + "+" + className);
 			filenameKey.set(className + "|" + fileName);
 		}
 
