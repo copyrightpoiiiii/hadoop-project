@@ -64,12 +64,12 @@ public class Bayes extends Configured implements Tool {
 			// 从hdfs中读出每个类别的文档数
 			SequenceFile.Reader readerOfDocNumInClass = new SequenceFile.Reader(fs, docNumInClass, conf);
 			Text keyOfDocNumInClass = new Text();
-			Text valueOfDocNumInClass = new Text();
+			IntWritable valueOfDocNumInClass = new IntWritable();
 			double sumOfAllDoc = 0;
 			Map<String, Integer> tmpClassAndDocNum = new HashMap<String, Integer>();
 			while (readerOfDocNumInClass.next(keyOfDocNumInClass, valueOfDocNumInClass)) {
-				tmpClassAndDocNum.put(keyOfDocNumInClass.toString(), Integer.parseInt(valueOfDocNumInClass.toString()));
-				sumOfAllDoc += Integer.parseInt(valueOfDocNumInClass.toString());
+				tmpClassAndDocNum.put(keyOfDocNumInClass.toString(), valueOfDocNumInClass.get()));
+				sumOfAllDoc += valueOfDocNumInClass.get();
 			}
 			readerOfDocNumInClass.close();
 			// 计算先验概率
