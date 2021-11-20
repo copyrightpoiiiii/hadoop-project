@@ -38,8 +38,6 @@ public class calcCategoryNumInData extends Configured implements Tool {
 
         private Text category = new Text();
 
-        private IntWritable wordSum = new IntWritable();
-
         public void reduce(Text key, Iterable<IntWritable> value, Context context)
             throws  IOException, InterruptedException {
                 int sum = 0;
@@ -47,8 +45,7 @@ public class calcCategoryNumInData extends Configured implements Tool {
                     sum += item.get();
                 }
                 this.category.set(key);
-                this.wordSum.set(String.valueOf(sum));
-                context.write(this.category,this.wordSum);
+                context.write(this.category,new Text(String.valueOf(sum)));
             }
     }
 
