@@ -16,7 +16,7 @@ public class main {
         conf.set("OUTPUTPATH","hdfs://master:9000/SerializationTrainData");
 
         serializationData seqCov = new serializationData();
-        ToolRunner.run(conf, seqCov, args);
+        //ToolRunner.run(conf, seqCov, args);
 
         calcCategoryNumInData calcCategoryNum = new calcCategoryNumInData();
         ToolRunner.run(conf, calcCategoryNum, args);

@@ -22,7 +22,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 public class calcCategoryNumInData extends Configured implements Tool {
 
-    public static class calcCategoryNumInDataMapper extends Mapper<Text, IntWritable, Text, IntWritable> {
+    public static class calcCategoryNumInDataMapper extends Mapper<Text, BytesWritable, Text, Text> {
 
         private Text category = new Text();
 
@@ -34,7 +34,7 @@ public class calcCategoryNumInData extends Configured implements Tool {
             }
     }
 
-    public static class calcCategoryNumInDataReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+    public static class calcCategoryNumInDataReducer extends Reducer<Text, Text, Text, Text> {
 
         private Text category = new Text();
 
