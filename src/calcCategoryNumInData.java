@@ -30,7 +30,7 @@ public class calcCategoryNumInData extends Configured implements Tool {
             throws IOException, InterruptedException {
                 String[] line = key.toString().split("|");
                 this.category.set(line[0]);
-                context.write(this.category,new IntWritable(1));
+                context.write(this.category,new Text("1"));
             }
     }
 
@@ -47,7 +47,7 @@ public class calcCategoryNumInData extends Configured implements Tool {
                     sum += item.get();
                 }
                 this.category.set(key);
-                this.wordSum.set(sum);
+                this.wordSum.set(String.valueOf(sum));
                 context.write(this.category,this.wordSum);
             }
     }
