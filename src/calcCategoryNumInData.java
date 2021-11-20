@@ -22,7 +22,7 @@ import org.apache.hadoop.util.ToolRunner;
 
 public class calcCategoryNumInData extends Configured implements Tool {
 
-    public static class calcCategoryNumInDataMapper extends Mapper<Text, BytesWritable, Text, Text> {
+    public static class calcCategoryNumInDataMapper extends Mapper<Text, IntWritable, Text, IntWritable> {
 
         private Text category = new Text();
 
@@ -30,11 +30,11 @@ public class calcCategoryNumInData extends Configured implements Tool {
             throws IOException, InterruptedException {
                 String[] line = key.toString().split("|");
                 this.category.set(line[0]);
-                context.write(this.category,new Text("1"));
+                context.write(this.category,new IntWritable(1));
             }
     }
 
-    public static class calcCategoryNumInDataReducer extends Reducer<Text, Text, Text, Text> {
+    public static class calcCategoryNumInDataReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 
         private Text category = new Text();
 
@@ -45,7 +45,7 @@ public class calcCategoryNumInData extends Configured implements Tool {
                     sum += item.get();
                 }
                 this.category.set(key);
-                context.write(this.category,new Text(String.valueOf(sum)));
+                context.write(this.category,new IntWritable(sum));
             }
     }
 
