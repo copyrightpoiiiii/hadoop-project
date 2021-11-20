@@ -22,11 +22,11 @@ import org.apache.hadoop.util.ToolRunner;
 
 public class calcCategoryNumInData extends Configured implements Tool {
 
-    public static class calcCategoryNumInDataMapper extends Mapper<Text, IntWritable, Text, IntWritable> {
+    public static class calcCategoryNumInDataMapper extends Mapper<Text, BytesWritable, Text, IntWritable> {
 
         private Text category = new Text();
 
-        public void map(Text key, IntWritable value, Context context)
+        public void map(Text key, BytesWritable value, Context context)
             throws IOException, InterruptedException {
                 String[] line = key.toString().split("|");
                 this.category.set(line[0]);
