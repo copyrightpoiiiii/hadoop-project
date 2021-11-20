@@ -68,7 +68,7 @@ public class Bayes extends Configured implements Tool {
 			double sumOfAllDoc = 0;
 			Map<String, Integer> tmpClassAndDocNum = new HashMap<String, Integer>();
 			while (readerOfDocNumInClass.next(keyOfDocNumInClass, valueOfDocNumInClass)) {
-				tmpClassAndDocNum.put(keyOfDocNumInClass.toString(), valueOfDocNumInClass.get()));
+				tmpClassAndDocNum.put(keyOfDocNumInClass.toString(), valueOfDocNumInClass.get());
 				sumOfAllDoc += valueOfDocNumInClass.get();
 			}
 			readerOfDocNumInClass.close();

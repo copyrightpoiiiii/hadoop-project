@@ -73,7 +73,7 @@ public class calcWordNumInDoc extends Configured implements Tool {
 		job.setReducerClass(calcWordNumInDocReducer.class);
 
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
+		job.setOutputValueClass(IntWritable.class);
 		job.setInputFormatClass(SequenceFileInputFormat.class);
 		job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
