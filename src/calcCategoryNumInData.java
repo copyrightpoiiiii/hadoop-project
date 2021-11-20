@@ -67,8 +67,10 @@ public class calcCategoryNumInData extends Configured implements Tool {
 		job.setCombinerClass(calcCategoryNumInDataReducer.class);
 		job.setReducerClass(calcCategoryNumInDataReducer.class);
 
+        job.setMapOutputKeyClass(Text.class);
+        job.setMapOutputValueClass(IntWritable.class);
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
+		job.setOutputValueClass(IntWritable.class);
 		job.setInputFormatClass(SequenceFileInputFormat.class);
 		job.setOutputFormatClass(SequenceFileOutputFormat.class);
 
