@@ -52,6 +52,8 @@ public class Bayes extends Configured implements Tool {
 				}
 			}
 
+			System.out.println("1111debug");
+
 			Configuration conf = context.getConfiguration();
 			Path docNumInClass = new Path("hdfs://master:9000/CategoryNum/part-r-00000");
 			Path eachWordNumInClass = new Path("hdfs://master:9000/WordInDoc/part-r-00000");
@@ -81,7 +83,6 @@ public class Bayes extends Configured implements Tool {
 				classPriorProbability.put(classNameKey, classPriorValue);
 			}
 			// 取出类别中每个单词出现的次数,形式为：ANTA@winning 1
-			SequenceFile.Reader readerOfEachWordNumInClass = new SequenceFile.Reader(fs, eachWordNumInClass, conf);
 			Text keyOfEachWordNumInClass = new Text();
 			IntWritable valueOfEachWordNumInClass = new IntWritable();
 			Map<String, Integer> tmpEachTermNumInClass = new HashMap<String, Integer>();
@@ -201,3 +202,5 @@ public class Bayes extends Configured implements Tool {
 		System.exit(res);
 	}
 }
+package qi.hadoop.bayes;
+
